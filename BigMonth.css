@@ -1,0 +1,40 @@
+#more,#less,#left,#right
+{
+	position: absolute;
+	bottom:10px;
+	width: 60px;
+	height: 60px;
+
+	border-radius: 50%;
+}
+#MonthTitle
+{
+
+	text-align: center;
+}
+#Toutside
+{
+	position: absolute;
+	top: 10px;
+	width: 100%;
+}
+#less
+{
+	left: 0px;
+	background: url('pic/expand.png')no-repeat;
+}
+#more
+{
+	right:0px;
+	background: url('pic/contract.png')no-repeat;
+}
+#left
+{
+	left: 80px;
+	background: url('pic/left.png')no-repeat;
+}
+#right
+{
+	right:80px;
+	background: url('pic/right.png')no-repeat;
+}
