@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "Final";
+    src: url("Final.eot"); /* IE9 */
+    src: url("Final.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    
+    url("Final.woff") format("woff"), /* chrome、firefox */
+    url("Final.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    
+    url("Final.svg#Final") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+

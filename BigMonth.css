@@ -3,19 +3,14 @@
 	font-family: song2;
 	src:url('fonts/song2.TTF');
 }
+
+
 *{
 margin:0;
 padding:0;
 }
-#more,#less
-{
-	position: absolute;
-	bottom:10px;
-	width: 60px;
-	height: 60px;
 
-	border-radius: 50%;
-}
+
 #MonthTitle
 {
 	
@@ -24,7 +19,7 @@ padding:0;
 }
 #Toutside
 {
-	top: 5px;
+	top: 20px;
 	position: absolute;
 	width: 100%;
 	
@@ -45,7 +40,77 @@ padding:0;
 	bottom: 30px;
 	width: 100%;
 }
+#BMOK
+{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	height: 40px;
+	width: 40px;
 
+}
+
+
+
+.goalDM
+{
+	/*visibility: hidden;*/
+
+	left: 30px;
+	position: absolute;
+	width: 100%;
+	font-family: song2;
+	font-size: 30px;
+	margin: 0 auto;
+}
+.DMOK
+{
+	position: absolute;
+	right: 40px;
+	height: 40px;
+	width: 40px;
+}
+
+
+
+.goalBW
+{
+	left: 100px;
+	position: absolute;
+	width: 100%;
+	font-family: song2;
+	font-size: 20px;
+	margin: 0 auto;
+	visibility: hidden;
+}
+.goalBWDate
+{
+	left: 5px;
+	position: absolute;
+	font-family: song2;
+	font-size: 15px;
+	white-space: pre-wrap;
+	visibility: hidden;
+}
+.BWOK
+{
+	position: absolute;
+	height: 40px;
+	width: 40px;
+	right: 40px;
+	visibility: hidden;
+}
+
+
+#more,#less
+{
+	position: absolute;
+	bottom:10px;
+	width: 60px;
+	height: 60px;
+
+	border-radius: 50%;
+}
 #less
 {
 	left: 0px;
@@ -58,6 +123,47 @@ padding:0;
 	background: url('pic/contract.png')no-repeat;
 	background-size: contain;
 }
+#add
+{
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border-style: hidden;
+	top: 0px;
+	right: 15px;
+	background: url('pic/add.png')no-repeat;
+	background-size: contain;
+}
+#del
+{
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border-style: hidden;
+	top: 45px;
+	right: 15px;
+	background: url('pic/delete.png')no-repeat;
+	background-size: contain;
+}
+
+
+
+.justs
+{
+	text-align: center;
+	font-family: song2;
+}
+.so
+{
+	position: absolute;
+	width: 100%;
+}
+
+
+
+
 body, html {
 　　position: fixed;
 　　top: 0px;
