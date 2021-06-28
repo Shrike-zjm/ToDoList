@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "Eng4";
+    src: url("Eng4.eot"); /* IE9 */
+    src: url("Eng4.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    
+    url("Eng4.woff") format("woff"), /* chrome、firefox */
+    url("Eng4.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    
+    url("Eng4.svg#Eng4") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+

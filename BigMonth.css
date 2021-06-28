@@ -1,4 +1,13 @@
-#more,#less,#left,#right
+ @font-face
+{
+	font-family: song2;
+	src:url('fonts/song2.TTF');
+}
+*{
+margin:0;
+padding:0;
+}
+#more,#less
 {
 	position: absolute;
 	bottom:10px;
@@ -9,32 +18,62 @@
 }
 #MonthTitle
 {
-
+	
 	text-align: center;
+	
 }
 #Toutside
 {
+	top: 5px;
 	position: absolute;
-	top: 10px;
+	width: 100%;
+	
+}
+#goalBM
+{
+	text-align: center;
+	margin: 0 auto;
+	height: 100%;
+	writing-mode: vertical-lr;
+	font-family: song2;
+	font-size: 40px;
+}
+#goalBMout
+{
+	position: absolute;
+	top: 60px;
+	bottom: 30px;
 	width: 100%;
 }
+
 #less
 {
 	left: 0px;
 	background: url('pic/expand.png')no-repeat;
+	background-size: contain;
 }
 #more
 {
 	right:0px;
 	background: url('pic/contract.png')no-repeat;
+	background-size: contain;
 }
-#left
-{
-	left: 80px;
-	background: url('pic/left.png')no-repeat;
+body, html {
+　　position: fixed;
+　　top: 0px;
+　　bottom: 0px;
+　　width: 100%;
+　　height: 100%;
 }
-#right
-{
-	right:80px;
-	background: url('pic/right.png')no-repeat;
+body:before {
+
+width: 200%;
+height: 200%;
+content: ' ';
+position: fixed;
+z-index: -1;
+top: 0;
+left: 0;
+background: #fff;
+
 }
