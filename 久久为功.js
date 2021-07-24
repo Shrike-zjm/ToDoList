@@ -15,6 +15,7 @@ var less=document.getElementById("less");
 var more=document.getElementById("more");
 var add=document.getElementById("add");
 var del=document.getElementById("del");
+var today=document.getElementById("today");
 var justshow=document.getElementById("justshow");
 var showoutside=document.getElementById("showoutside");
 var justshow2=document.getElementById("justshow2");
@@ -1069,6 +1070,21 @@ function delClick()
             }
     }
 }
+today.onclick=function()
+{
+    BMOK.style.visibility="hidden";
+    goalBM.style.visibility="hidden";
+
+    var nowPastDays=pastYearDays(nowYear)+yearDays(nowYear,nowMonth+1)+nowDay;
+    var delta=nowPastDays-BigWeek.FirstMondayDays;
+    var index=Math.floor(delta/7);
+    WeekIndex=index;
+
+
+
+    theStatus=6;
+    refreshUD();
+}
 //————————————————————————————以上均为全局变量——————————————————————————————————————————
 
 //————BigMonth is here————————BigMonth is here————————BigMonth is here————————BigMonth is here————————BigMonth is here————————BigMonth is here————
@@ -1079,6 +1095,7 @@ function refreshBM()
     goalBM.style.visibility="visible";
     add.style.visibility="hidden";
     del.style.visibility="hidden";
+    today.style.visibility="visible";
     showoutside.style.visibility="hidden";
     showoutside2.style.visibility="hidden";
     var i;
@@ -1185,7 +1202,6 @@ function BMOKclick()
 
 
 
-
 //————DetailMonth is here————————DetailMonth is here————————DetailMonth is here————————DetailMonth is here————————DetailMonth is here————
 function refreshDM()
 {
@@ -1197,6 +1213,9 @@ function refreshDM()
     goalBM.style.visibility="hidden";
     MT.style.visibility="visible";
     showoutside2.style.visibility="hidden";
+
+    today.style.visibility="hidden";
+
     var i;
     for(i=0;i<=5;i++)
     {
@@ -2092,6 +2111,7 @@ function refreshUD()
     more.style.visibility="hidden";
     add.style.visibility="visible";
     del.style.visibility="visible";
+    today.style.visibility="hidden";
     MT.style.fontSize=30+"px";
     MT.innerHTML=`${String(nowYear)}.${String(nowMonth+1)}.${String(nowDay)}`;
     showoutside2.style.visibility="hidden";

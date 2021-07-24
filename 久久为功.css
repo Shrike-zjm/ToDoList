@@ -189,6 +189,19 @@ padding:0;
 	background: url('pic/contract.png')no-repeat;
 	background-size: contain;
 }
+
+#today
+{
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	bottom: 10px;
+	border-radius: 50%;
+	left: 0px;
+	background: url('pic/today.png')no-repeat;
+	background-size: contain;
+}
+
 #add
 {
 	position: absolute;
@@ -213,6 +226,7 @@ padding:0;
 	background: url('pic/delete.png')no-repeat;
 	background-size: contain;
 }
+
 
 
 
