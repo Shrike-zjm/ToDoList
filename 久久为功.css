@@ -3,7 +3,11 @@
 	font-family: song2;
 	src:url('fonts/song2.TTF');
 }
-
+ @font-face
+{
+	font-family: eng;
+	src:url('fonts/Final.ttf');
+}
 
 *{
 margin:0;
@@ -13,9 +17,9 @@ padding:0;
 
 #MonthTitle
 {
-	
+	font-family: eng;
 	text-align: center;
-	
+	font-size: 30px;	
 }
 #Toutside
 {
@@ -220,7 +224,7 @@ padding:0;
 	border-radius: 50%;
 	border-style: hidden;
 	top: 0px;
-	right: 15px;
+	right: 0px;
 	background: url('pic/add.png')no-repeat;
 	background-size: contain;
 }
@@ -232,7 +236,7 @@ padding:0;
 	border-radius: 50%;
 	border-style: hidden;
 	top: 45px;
-	right: 15px;
+	right: 0px;
 	background: url('pic/delete.png')no-repeat;
 	background-size: contain;
 }
@@ -243,10 +247,8 @@ padding:0;
 	height: 40px;
 	border-radius: 50%;
 	border-style: hidden;
-	/*right: 54px;
-	top: 22.5px;*/
-	left: 15px;
-	top: 0px;
+	right: 39px;
+	top: 22.5px;
 	background: url('pic/pin.png')no-repeat;
 	background-size: contain;
 	visibility: hidden;

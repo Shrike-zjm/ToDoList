@@ -1872,7 +1872,7 @@ function refreshBW()
     showoutside.style.visibility="hidden";
     showoutside2.style.visibility="hidden";
     //MT.style.visibility="visible";
-    MT.style.fontSize=30+"px";
+    MT.style.fontSize=27+"px";
     showoutside2.style.visibility="visible";
     showoutside2.style.bottom=15+"px";
     justshow2.innerHTML="点击左侧日期以进入周视图";
@@ -2132,7 +2132,7 @@ function refreshDW()
     del.style.visibility="visible";
     shift.style.visibility="visible";
     MT.style.fontSize=22+"px";
-    MT.innerHTML=`${BigWeek.Weeks[WeekIndex].s.y}.${BigWeek.Weeks[WeekIndex].s.m}.${BigWeek.Weeks[WeekIndex].s.d}——${BigWeek.Weeks[WeekIndex].t.y}.${BigWeek.Weeks[WeekIndex].t.m}.${BigWeek.Weeks[WeekIndex].t.d}`;
+    MT.innerHTML=`${BigWeek.Weeks[WeekIndex].s.y}.${BigWeek.Weeks[WeekIndex].s.m}.${BigWeek.Weeks[WeekIndex].s.d}~${BigWeek.Weeks[WeekIndex].t.y}.${BigWeek.Weeks[WeekIndex].t.m}.${BigWeek.Weeks[WeekIndex].t.d}`;
     showoutside2.style.visibility="hidden";
     var i;
     for(i=0;i<=5;i++)
@@ -2317,7 +2317,7 @@ function refreshBD()
     for(i=0;i<=5;i++)MoveUpList[i].style.visibility='hidden';
     showoutside.style.visibility="hidden";
     showoutside2.style.visibility="hidden";
-    MT.style.fontSize=22+"px";
+    MT.style.fontSize=20+"px";
     MT.innerHTML=`${BigWeek.Weeks[WeekIndex].s.y}.${BigWeek.Weeks[WeekIndex].s.m}.${BigWeek.Weeks[WeekIndex].s.d}——${BigWeek.Weeks[WeekIndex].t.y}.${BigWeek.Weeks[WeekIndex].t.m}.${BigWeek.Weeks[WeekIndex].t.d}`;
     showoutside2.style.visibility="visible";
     showoutside2.style.bottom=15+"px";
