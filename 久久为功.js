@@ -15,6 +15,7 @@ var less=document.getElementById("less");
 var more=document.getElementById("more");
 var add=document.getElementById("add");
 var del=document.getElementById("del");
+var shift=document.getElementById("shift");
 var today=document.getElementById("today");
 var justshow=document.getElementById("justshow");
 var showoutside=document.getElementById("showoutside");
@@ -201,7 +202,19 @@ var theStatus=1;
             goalUDList[i].style.width=900+"px";
         }
     }
-
+    //MoveUp
+    var MoveUpList=[];
+    MoveUpList.push(document.getElementById("MU1"));
+    MoveUpList.push(document.getElementById("MU2"));
+    MoveUpList.push(document.getElementById("MU3"));
+    MoveUpList.push(document.getElementById("MU4"));
+    MoveUpList.push(document.getElementById("MU5"));
+    MoveUpList.push(document.getElementById("MU6"));
+    for(i=0;i<=5;i++)
+    {
+        MoveUpList[i].style.top=(100+i*(height6-20))+"px";
+        MoveUpList[i].style.visibility="hidden";
+    }
 //这部分是每个界面分别的变量 但是必须写在这了(╯°Д°)╯︵┴┴┴┴(╯°Д°)╯︵┴┴┴┴(╯°Д°)╯︵┴┴┴┴
 
 if(localStorage.getItem("first2"))
@@ -354,7 +367,7 @@ else
     }
     
     localStorage.setItem("UltimateDay",JSON.stringify(UltimateDay));
-
+    
 }
 
 
@@ -450,6 +463,37 @@ function up()
                 }
                 break;
             }
+        case 202:
+            {
+                if((DetailMonth[`y${nowYearStr}`][nowMonth].length)==0||DMnowLine==Math.floor(((DetailMonth[`y${nowYearStr}`][nowMonth].length)-1)/6)*6)
+                {
+                    alert("已经到底了啊(╯°Д°)╯︵┴┴┴┴");
+                }
+                else
+                {
+                    DMnowLine+=6;
+                    var nowLine=DMnowLine;
+                    for(i=0;i<=5;i++,nowLine++)
+                    {
+                        if(nowLine>DetailMonth[`y${nowYearStr}`][nowMonth].length-1)
+                        {
+                            goalDMList[i].style.visibility="hidden";
+                            MoveUpList[i].style.visibility='hidden';
+                        }
+                        else
+                        {
+                            goalDMList[i].style.visibility="visible";
+                            goalDMList[i].innerHTML=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine].goal;
+                            MoveUpList[i].style.visibility='visible';
+                            if(nowLine==0)MoveUpList[i].style.visibility='hidden';
+                        }
+                        
+                    }
+                    //test1.innerHTML=DMnowLine;
+                    
+                }
+                break;
+            }
         case 4:
             {
                 if(BigWeek.Weeks[WeekIndex].DetailList.length==0||DWnowLine==Math.floor(((BigWeek.Weeks[WeekIndex].DetailList.length)-1)/6)*6)
@@ -464,6 +508,35 @@ function up()
                 }
                 break;
             }
+        case 402:
+            {
+                if(BigWeek.Weeks[WeekIndex].DetailList.length==0||DWnowLine==Math.floor(((BigWeek.Weeks[WeekIndex].DetailList.length)-1)/6)*6)
+                {
+                    alert("已经到底了啊(╯°Д°)╯︵┴┴┴┴");
+                }
+                else
+                {
+                    DWnowLine+=6;
+                    var nowLine=DWnowLine;
+                    for(i=0;i<=5;i++,nowLine++)
+                    {
+                        if(nowLine>BigWeek.Weeks[WeekIndex].DetailList.length-1)
+                        {
+                            goalDWList[i].style.visibility="hidden";
+                            DWOKList[i].style.visibility="hidden";
+                            MoveUpList[i].style.visibility='hidden';
+                        }
+                        else
+                        {
+                            goalDWList[i].style.visibility="visible";
+                            goalDWList[i].innerHTML=BigWeek.Weeks[WeekIndex].DetailList[nowLine].goal;
+                            MoveUpList[i].style.visibility='visible';
+                            if(nowLine==0)MoveUpList[i].style.visibility='hidden';
+                        }
+                    }
+                }
+                break;
+            }
         case 6:
             {
                 if(UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1].length==0||UDnowLine==Math.floor(((UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1].length)-1)/6)*6)
@@ -474,6 +547,35 @@ function up()
                 {
                     UDnowLine+=6;
                     lineRefreshUD();
+                }
+                break;
+            }
+        case 602:
+            {
+                if(UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1].length==0||UDnowLine==Math.floor(((UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1].length)-1)/6)*6)
+                {
+                    alert("已经到底了啊(╯°Д°)╯︵┴┴┴┴");
+                }
+                else
+                {
+                    UDnowLine+=6;
+                    var nowLine=UDnowLine;
+                    for(i=0;i<=5;i++,nowLine++)
+                    {
+                        if(nowLine>UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1].length-1)
+                        {
+                            goalUDList[i].style.visibility="hidden";
+                            UDOKList[i].style.visibility="hidden";
+                            MoveUpList[i].style.visibility='hidden';
+                        }
+                        else
+                        {
+                            goalUDList[i].style.visibility="visible";
+                            goalUDList[i].innerHTML=UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine].goal;
+                            MoveUpList[i].style.visibility='visible';
+                            if(nowLine==0)MoveUpList[i].style.visibility='hidden';
+                        }
+                    }
                 }
                 break;
             }
@@ -498,6 +600,35 @@ function down()
                 }
                 break;
             }
+        case 202:
+            {
+                if(DMnowLine==0)
+                {
+                    alert("已经到顶了啊(╯°Д°)╯︵┴┴┴┴");
+                }
+                else
+                {
+                    DMnowLine-=6;
+                    var nowLine=DMnowLine;
+                    for(i=0;i<=5;i++,nowLine++)
+                    {
+                        if(nowLine>DetailMonth[`y${nowYearStr}`][nowMonth].length-1)
+                        {
+                            goalDMList[i].style.visibility="hidden";
+                            MoveUpList[i].style.visibility='hidden';
+                        }
+                        else
+                        {
+                            goalDMList[i].style.visibility="visible";
+                            goalDMList[i].innerHTML=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine].goal;
+                            MoveUpList[i].style.visibility='visible';
+                            if(nowLine==0)MoveUpList[i].style.visibility='hidden';
+                        }
+                        
+                    }
+                }
+                break;
+            }
         case 4:
             {
                 if(DWnowLine==0)
@@ -512,6 +643,35 @@ function down()
                 }
                 break;
             }
+        case 402:
+            {
+                if(DWnowLine==0)
+                {
+                    alert("已经到顶了啊(╯°Д°)╯︵┴┴┴┴");
+                }
+                else
+                {
+                    DWnowLine-=6;
+                    var nowLine=DWnowLine;
+                    for(i=0;i<=5;i++,nowLine++)
+                    {
+                        if(nowLine>BigWeek.Weeks[WeekIndex].DetailList.length-1)
+                        {
+                            goalDWList[i].style.visibility="hidden";
+                            DWOKList[i].style.visibility="hidden";
+                            MoveUpList[i].style.visibility='hidden';
+                        }
+                        else
+                        {
+                            goalDWList[i].style.visibility="visible";
+                            goalDWList[i].innerHTML=BigWeek.Weeks[WeekIndex].DetailList[nowLine].goal;
+                            MoveUpList[i].style.visibility='visible';
+                            if(nowLine==0)MoveUpList[i].style.visibility='hidden';
+                        }
+                    }
+                }
+                break;
+            }
         case 6:
             {
                 if(UDnowLine==0)
@@ -523,6 +683,35 @@ function down()
                     UDnowLine-=6;
                     //test1.innerHTML=UDnowLine;
                     lineRefreshUD();
+                }
+                break;
+            }
+        case 602:
+            {
+                if(UDnowLine==0)
+                {
+                    alert("已经到顶了啊(╯°Д°)╯︵┴┴┴┴");
+                }
+                else
+                {
+                    UDnowLine-=6;
+                    var nowLine=UDnowLine;
+                    for(i=0;i<=5;i++,nowLine++)
+                    {
+                        if(nowLine>UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1].length-1)
+                        {
+                            goalUDList[i].style.visibility="hidden";
+                            UDOKList[i].style.visibility="hidden";
+                            MoveUpList[i].style.visibility='hidden';
+                        }
+                        else
+                        {
+                            goalUDList[i].style.visibility="visible";
+                            goalUDList[i].innerHTML=UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine].goal;
+                            MoveUpList[i].style.visibility='visible';
+                            if(nowLine==0)MoveUpList[i].style.visibility='hidden';
+                        }
+                    }
                 }
                 break;
             }
@@ -971,6 +1160,7 @@ function delClick()
                     more.style.visibility="hidden";
                     less.style.visibility="hidden";
                     add.style.visibility="hidden";
+                    shift.style.visibility="hidden";
                     theStatus=201;
                 }
                 break;
@@ -987,6 +1177,7 @@ function delClick()
                 more.style.visibility="visible";
                 less.style.visibility="visible";
                 add.style.visibility="visible";
+                shift.style.visibility="visible";
                 lineRefreshDm();
                 break;
             }
@@ -1010,6 +1201,7 @@ function delClick()
                     more.style.visibility="hidden";
                     less.style.visibility="hidden";
                     add.style.visibility="hidden";
+                    shift.style.visibility="hidden";
                     theStatus=401;
                 }
                 break;
@@ -1026,6 +1218,7 @@ function delClick()
                 more.style.visibility="visible";
                 less.style.visibility="visible";
                 add.style.visibility="visible";
+                shift.style.visibility="visible";
                 lineRefreshDW();
                 break;
             }
@@ -1049,6 +1242,7 @@ function delClick()
                     more.style.visibility="hidden";
                     less.style.visibility="hidden";
                     add.style.visibility="hidden";
+                    shift.style.visibility="hidden";
                     theStatus=601;
                 }
                 break;
@@ -1065,6 +1259,191 @@ function delClick()
                 //more.style.visibility="visible";
                 less.style.visibility="visible";
                 add.style.visibility="visible";
+                shift.style.visibility="visible";
+                lineRefreshUD();
+                break;
+            }
+    }
+}
+shift.onclick=function()
+{
+    switch(theStatus)
+    {
+        case 2:
+            {
+                if(DetailMonth[`y${nowYearStr}`][nowMonth].length==0)
+                {
+                    alert("这里啥计划都还没有啊(╯°Д°)╯︵┴┴┴┴");
+                }
+                else
+                {
+                    //alert("hello");
+                    showoutside2.style.visibility="visible";
+                    showoutside2.style.bottom=15+"px";
+                    justshow2.innerHTML="点击按钮以上移";
+                    justshow3.innerHTML="点击图钉按钮以返回";
+                    var i;
+                    for(i=0;i<=5;i++)
+                    {
+                        DMOKList[i].style.visibility="hidden";
+                    }
+                    more.style.visibility="hidden";
+                    less.style.visibility="hidden";
+                    add.style.visibility="hidden";
+                    del.style.visibility="hidden";
+                    theStatus=202;
+
+                    var nowLine=DMnowLine;
+                    for(i=0;i<=5;i++,nowLine++)
+                    {
+                        if(nowLine>DetailMonth[`y${nowYearStr}`][nowMonth].length-1)
+                        {
+                            goalDMList[i].style.visibility="hidden";
+                            MoveUpList[i].style.visibility='hidden';
+                        }
+                        else
+                        {
+                            goalDMList[i].style.visibility="visible";
+                            goalDMList[i].innerHTML=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine].goal;
+                            MoveUpList[i].style.visibility='visible';
+                            if(nowLine==0)MoveUpList[i].style.visibility='hidden';
+                        }
+                        
+                    }
+                }
+                break;
+            }
+        case 202:
+            {
+                showoutside2.style.visibility="hidden";
+                theStatus=2;
+                var i;
+                for(i=0;i<=5;i++)
+                {
+                    DMOKList[i].style.visibility="visible";
+                }
+                more.style.visibility="visible";
+                less.style.visibility="visible";
+                add.style.visibility="visible";
+                del.style.visibility="visible";
+                lineRefreshDm();
+                break;
+            }
+        case 4:
+            {
+                if(BigWeek.Weeks[WeekIndex].DetailList.length==0)
+                {
+                    alert("这里啥计划都还没有啊(╯°Д°)╯︵┴┴┴┴");
+                }
+                else
+                {
+                    showoutside2.style.visibility="visible";
+                    showoutside2.style.bottom=15+"px";
+                    justshow2.innerHTML="点击按钮以上移";
+                    justshow3.innerHTML="点击图钉按钮以返回";
+                    var i;
+                    for(i=0;i<=5;i++)
+                    {
+                        DWOKList[i].style.visibility="hidden";
+                    }
+                    more.style.visibility="hidden";
+                    less.style.visibility="hidden";
+                    add.style.visibility="hidden";
+                    del.style.visibility="hidden";
+                    theStatus=402;
+
+                    var nowLine=DWnowLine;
+                    for(i=0;i<=5;i++,nowLine++)
+                    {
+                        if(nowLine>BigWeek.Weeks[WeekIndex].DetailList.length-1)
+                        {
+                            goalDWList[i].style.visibility="hidden";
+                            DWOKList[i].style.visibility="hidden";
+                            MoveUpList[i].style.visibility='hidden';
+                        }
+                        else
+                        {
+                            goalDWList[i].style.visibility="visible";
+                            goalDWList[i].innerHTML=BigWeek.Weeks[WeekIndex].DetailList[nowLine].goal;
+                            MoveUpList[i].style.visibility='visible';
+                            if(nowLine==0)MoveUpList[i].style.visibility='hidden';
+                        }
+                    }
+                }
+                break;
+            }
+        case 402:
+            {
+                showoutside2.style.visibility="hidden";
+                theStatus=4;
+                var i;
+                for(i=0;i<=5;i++)
+                {
+                    DWOKList[i].style.visibility="visible";
+                }
+                more.style.visibility="visible";
+                less.style.visibility="visible";
+                add.style.visibility="visible";
+                del.style.visibility="visible";
+                lineRefreshDW();
+                break;
+            }
+        case 6:
+            {
+                if(UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1].length==0)
+                {
+                    alert("这里啥计划都还没有啊(╯°Д°)╯︵┴┴┴┴");
+                }
+                else
+                {
+                    showoutside2.style.visibility="visible";
+                    showoutside2.style.bottom=15+"px";
+                    justshow2.innerHTML="点击按钮以上移";
+                    justshow3.innerHTML="点击图钉按钮以返回";
+                    var i;
+                    for(i=0;i<=5;i++)
+                    {
+                        UDOKList[i].style.visibility="hidden";
+                    }
+                    more.style.visibility="hidden";
+                    less.style.visibility="hidden";
+                    add.style.visibility="hidden";
+                    del.style.visibility="hidden";
+                    theStatus=602;
+
+                    var nowLine=UDnowLine;
+                    for(i=0;i<=5;i++,nowLine++)
+                    {
+                        if(nowLine>UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1].length-1)
+                        {
+                            goalUDList[i].style.visibility="hidden";
+                            UDOKList[i].style.visibility="hidden";
+                            MoveUpList[i].style.visibility='hidden';
+                        }
+                        else
+                        {
+                            goalUDList[i].style.visibility="visible";
+                            goalUDList[i].innerHTML=UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine].goal;
+                            MoveUpList[i].style.visibility='visible';
+                            if(nowLine==0)MoveUpList[i].style.visibility='hidden';
+                        }
+                    }
+                }
+                break;
+            }
+        case 602:
+            {
+                showoutside2.style.visibility="hidden";
+                theStatus=6;
+                var i;
+                for(i=0;i<=5;i++)
+                {
+                    UDOKList[i].style.visibility="visible";
+                }
+                //more.style.visibility="visible";
+                less.style.visibility="visible";
+                add.style.visibility="visible";
+                del.style.visibility="visible";
                 lineRefreshUD();
                 break;
             }
@@ -1095,6 +1474,8 @@ function refreshBM()
     goalBM.style.visibility="visible";
     add.style.visibility="hidden";
     del.style.visibility="hidden";
+    shift.style.visibility="hidden";
+    for(i=0;i<=5;i++)MoveUpList[i].style.visibility='hidden';
     today.style.visibility="visible";
     showoutside.style.visibility="hidden";
     showoutside2.style.visibility="hidden";
@@ -1210,6 +1591,8 @@ function refreshDM()
     more.style.visibility="visible";
     add.style.visibility="visible";
     del.style.visibility="visible";
+    shift.style.visibility="visible";
+    //for(i=0;i<=5;i++)MoveUpList[i].style.visibility='hidden';
     goalBM.style.visibility="hidden";
     MT.style.visibility="visible";
     showoutside2.style.visibility="hidden";
@@ -1260,6 +1643,7 @@ function lineRefreshDm()
         {
             goalDMList[i].style.visibility="hidden";
             DMOKList[i].style.visibility="hidden";
+            MoveUpList[i].style.visibility='hidden';
         }
     }
     else
@@ -1273,12 +1657,13 @@ function lineRefreshDm()
             {
                 goalDMList[i].style.visibility="hidden";
                 DMOKList[i].style.visibility="hidden";
+                MoveUpList[i].style.visibility='hidden';
             }
             else
             {
                 goalDMList[i].style.visibility="visible";
                 goalDMList[i].innerHTML=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine].goal;
-                
+                MoveUpList[i].style.visibility='hidden';
                 DMOKList[i].style.visibility="visible";
                 if(DetailMonth[`y${nowYearStr}`][nowMonth][nowLine].isOK)
                 {
@@ -1482,6 +1867,8 @@ function refreshBW()
     more.style.visibility="hidden";
     add.style.visibility="hidden";
     del.style.visibility="hidden";
+    shift.style.visibility="hidden";
+    for(i=0;i<=5;i++)MoveUpList[i].style.visibility='hidden';
     showoutside.style.visibility="hidden";
     showoutside2.style.visibility="hidden";
     //MT.style.visibility="visible";
@@ -1743,6 +2130,7 @@ function refreshDW()
     more.style.visibility="visible";
     add.style.visibility="visible";
     del.style.visibility="visible";
+    shift.style.visibility="visible";
     MT.style.fontSize=22+"px";
     MT.innerHTML=`${BigWeek.Weeks[WeekIndex].s.y}.${BigWeek.Weeks[WeekIndex].s.m}.${BigWeek.Weeks[WeekIndex].s.d}——${BigWeek.Weeks[WeekIndex].t.y}.${BigWeek.Weeks[WeekIndex].t.m}.${BigWeek.Weeks[WeekIndex].t.d}`;
     showoutside2.style.visibility="hidden";
@@ -1779,6 +2167,7 @@ function lineRefreshDW()
         {
             goalDWList[i].style.visibility="hidden";
             DWOKList[i].style.visibility="hidden";
+            MoveUpList[i].style.visibility='hidden';
         }
     }
     else
@@ -1792,12 +2181,14 @@ function lineRefreshDW()
             {
                 goalDWList[i].style.visibility="hidden";
                 DWOKList[i].style.visibility="hidden";
+                MoveUpList[i].style.visibility='hidden';
             }
             else
             {
                 goalDWList[i].style.visibility="visible";
                 goalDWList[i].innerHTML=BigWeek.Weeks[WeekIndex].DetailList[nowLine].goal;
                 DWOKList[i].style.visibility="visible";
+                MoveUpList[i].style.visibility='hidden';
                 if(BigWeek.Weeks[WeekIndex].DetailList[nowLine].isOK)
                 {
                     if(BigWeek.Weeks[WeekIndex].DetailList[nowLine].isOK==1)
@@ -1922,6 +2313,8 @@ function refreshBD()
     more.style.visibility="hidden";
     add.style.visibility="hidden";
     del.style.visibility="hidden";
+    shift.style.visibility="hidden";
+    for(i=0;i<=5;i++)MoveUpList[i].style.visibility='hidden';
     showoutside.style.visibility="hidden";
     showoutside2.style.visibility="hidden";
     MT.style.fontSize=22+"px";
@@ -2111,6 +2504,7 @@ function refreshUD()
     more.style.visibility="hidden";
     add.style.visibility="visible";
     del.style.visibility="visible";
+    shift.style.visibility="visible";
     today.style.visibility="hidden";
     MT.style.fontSize=30+"px";
     MT.innerHTML=`${String(nowYear)}.${String(nowMonth+1)}.${String(nowDay)}`;
@@ -2137,6 +2531,7 @@ function lineRefreshUD()
         {
             goalUDList[i].style.visibility="hidden";
             UDOKList[i].style.visibility="hidden";
+            MoveUpList[i].style.visibility='hidden';
         }
     }
     else
@@ -2150,12 +2545,14 @@ function lineRefreshUD()
             {
                 goalUDList[i].style.visibility="hidden";
                 UDOKList[i].style.visibility="hidden";
+                MoveUpList[i].style.visibility='hidden';
             }
             else
             {
                 goalUDList[i].style.visibility="visible";
                 goalUDList[i].innerHTML=UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine].goal;
                 UDOKList[i].style.visibility="visible";
+                MoveUpList[i].style.visibility='hidden';
                 if(UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine].isOK)
                 {
                     if(UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine].isOK==1)
@@ -2269,3 +2666,87 @@ function UDOKClick(i)
     return f;
 }
 //————UltimateDay is here————————UltimateDay is here————————UltimateDay is here————————UltimateDay is here————————UltimateDay is here————
+//————MoveUp is here————
+for(i=0;i<=5;i++)
+{
+    MoveUpList[i].onclick=MUClick(i);
+}
+function MUClick(i)
+{
+    var f=function()
+    {
+        switch(theStatus)
+        {
+            case 202:
+                {
+                    var nowLine=DMnowLine+i;
+                    if(i==0)
+                    {
+                        var tmp=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine];
+                        DetailMonth[`y${nowYearStr}`][nowMonth][nowLine]=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine-1];
+                        DetailMonth[`y${nowYearStr}`][nowMonth][nowLine-1]=tmp;
+                        goalDMList[i].innerHTML=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine].goal;
+                        //goalDMList[i-1].innerHTML=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine-1].goal;
+                    }
+                    else
+                    {
+                        var tmp=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine];
+                        DetailMonth[`y${nowYearStr}`][nowMonth][nowLine]=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine-1];
+                        DetailMonth[`y${nowYearStr}`][nowMonth][nowLine-1]=tmp;
+                        goalDMList[i].innerHTML=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine].goal;
+                        goalDMList[i-1].innerHTML=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine-1].goal;
+                        //alert("交换成功");
+                    }
+                    localStorage.setItem("DetailMonth",JSON.stringify(DetailMonth));
+                    break;
+                }
+            case 402:
+                {
+                    var nowLine=DWnowLine+i;
+                    if(i==0)
+                    {
+                        var tmp=BigWeek.Weeks[WeekIndex].DetailList[nowLine];
+                        BigWeek.Weeks[WeekIndex].DetailList[nowLine]=BigWeek.Weeks[WeekIndex].DetailList[nowLine-1];
+                        BigWeek.Weeks[WeekIndex].DetailList[nowLine-1]=tmp;
+                        goalDWList[i].innerHTML=BigWeek.Weeks[WeekIndex].DetailList[nowLine].goal;
+                        //goalDMList[i-1].innerHTML=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine-1].goal;
+                    }
+                    else
+                    {
+                        var tmp=BigWeek.Weeks[WeekIndex].DetailList[nowLine];
+                        BigWeek.Weeks[WeekIndex].DetailList[nowLine]=BigWeek.Weeks[WeekIndex].DetailList[nowLine-1];
+                        BigWeek.Weeks[WeekIndex].DetailList[nowLine-1]=tmp;
+                        goalDWList[i].innerHTML=BigWeek.Weeks[WeekIndex].DetailList[nowLine].goal;
+                        goalDWList[i-1].innerHTML=BigWeek.Weeks[WeekIndex].DetailList[nowLine-1].goal;
+                        //alert("交换成功");
+                    }
+                    localStorage.setItem("BigWeek",JSON.stringify(BigWeek));
+                    break;
+                }
+            case 602:
+                {
+                    var nowLine=UDnowLine+i;
+                    if(i==0)
+                    {
+                        var tmp=UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine];
+                        UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine]=UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine-1];
+                        UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine-1]=tmp;
+                        goalUDList[i].innerHTML=UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine].goal;
+                        //goalDMList[i-1].innerHTML=UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine-1].goal;
+                    }
+                    else
+                    {
+                        var tmp=UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine];
+                        UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine]=UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine-1];
+                        UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine-1]=tmp;
+                        goalUDList[i].innerHTML=UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine].goal;
+                        goalUDList[i-1].innerHTML=UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine-1].goal;
+                        //alert("交换成功");
+                    }
+                    localStorage.setItem("UltimateDay",JSON.stringify(UltimateDay));
+                    break; 
+                }
+        }
+    }
+    return f;
+}

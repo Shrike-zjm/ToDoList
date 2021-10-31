@@ -70,7 +70,17 @@ padding:0;
 	height: 40px;
 	width: 40px;
 }
-
+.MU
+{
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border-style: hidden;
+	right: 30px;
+	background: url('./pic/up.png')no-repeat;
+	background-size: contain;
+}
 
 
 .goalBW
@@ -226,7 +236,19 @@ padding:0;
 	background: url('pic/delete.png')no-repeat;
 	background-size: contain;
 }
-
+#shift
+{
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border-style: hidden;
+	right: 54px;
+	top: 22.5px;
+	background: url('pic/pin.png')no-repeat;
+	background-size: contain;
+	visibility: hidden;
+}
 
 
 
