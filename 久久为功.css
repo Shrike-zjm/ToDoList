@@ -243,8 +243,10 @@ padding:0;
 	height: 40px;
 	border-radius: 50%;
 	border-style: hidden;
-	right: 54px;
-	top: 22.5px;
+	/*right: 54px;
+	top: 22.5px;*/
+	left: 15px;
+	top: 0px;
 	background: url('pic/pin.png')no-repeat;
 	background-size: contain;
 	visibility: hidden;
