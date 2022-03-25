@@ -986,9 +986,6 @@ function right()
     }
 }
 
-//使用的时候很简单，只需要向下面这样调用即可
-//其中下面监听的是整个DOM
-//up, right, down, left为四个回调函数，分别处理上下左右的滑动事件
 EventUtil.listenTouchDirection(document, true, up, right, down, left);
 
 //PC端
@@ -1662,7 +1659,7 @@ function lineRefreshDm()
             else
             {
                 goalDMList[i].style.visibility="visible";
-                goalDMList[i].innerHTML=DetailMonth[`y${nowYearStr}`][nowMonth][nowLine].goal;
+                goalDMList[i].innerHTML=theWidth<height?Limit16(DetailMonth[`y${nowYearStr}`][nowMonth][nowLine].goal):DetailMonth[`y${nowYearStr}`][nowMonth][nowLine].goal;
                 MoveUpList[i].style.visibility='hidden';
                 DMOKList[i].style.visibility="visible";
                 if(DetailMonth[`y${nowYearStr}`][nowMonth][nowLine].isOK)
@@ -1679,17 +1676,7 @@ function lineRefreshDm()
             }
         }
     }
-    if(theWidth<height)
-        {
-            $(".omit16").each(function(){
-                var len=$(this).text().length;   //当前HTML对象text的长度
-                if(len>16){
-                    var str="";
-                    str=$(this).text().substring(0,15)+"...";  //使用字符串截取，获取前30个字符，多余的字符使用“......”代替
-                    $(this).html(str);                   //将替换的值赋值给当前对象
-                }
-             });
-        }
+
     
 }
 
@@ -1982,7 +1969,7 @@ function refreshBW()
         goalBWDList[i].innerHTML=`Week${i+1}\n${BigWeek.Weeks[index+i].s.m}.${BigWeek.Weeks[index+i].s.d}-${BigWeek.Weeks[index+i].t.m}.${BigWeek.Weeks[index+i].t.d}`;
         if(BigWeek.Weeks[index+i].goal)
         {
-            goalBWList[i].innerHTML=BigWeek.Weeks[index+i].goal;
+            goalBWList[i].innerHTML=theWidth<height?Limit16(BigWeek.Weeks[index+i].goal):BigWeek.Weeks[index+i].goal;
             BWOKList[i].style.visibility="visible";
             switch(BWlines)
             {
@@ -2022,17 +2009,6 @@ function refreshBW()
     }
     //alert(delta);
     //alert(index);
-    if(theWidth<height)
-        {
-            $(".omit18").each(function(){
-                var len=$(this).text().length;   //当前HTML对象text的长度
-                if(len>18){
-                    var str="";
-                    str=$(this).text().substring(0,17)+"...";  //使用字符串截取，获取前30个字符，多余的字符使用“......”代替
-                    $(this).html(str);                   //将替换的值赋值给当前对象
-                }
-             });
-        }
     
     
 }
@@ -2186,7 +2162,7 @@ function lineRefreshDW()
             else
             {
                 goalDWList[i].style.visibility="visible";
-                goalDWList[i].innerHTML=BigWeek.Weeks[WeekIndex].DetailList[nowLine].goal;
+                goalDWList[i].innerHTML=theWidth<height?Limit16(BigWeek.Weeks[WeekIndex].DetailList[nowLine].goal):BigWeek.Weeks[WeekIndex].DetailList[nowLine].goal;
                 DWOKList[i].style.visibility="visible";
                 MoveUpList[i].style.visibility='hidden';
                 if(BigWeek.Weeks[WeekIndex].DetailList[nowLine].isOK)
@@ -2208,17 +2184,6 @@ function lineRefreshDW()
             }
         }
     }
-    if(theWidth<height)
-        {
-            $(".omit16").each(function(){
-                var len=$(this).text().length;   //当前HTML对象text的长度
-                if(len>16){
-                    var str="";
-                    str=$(this).text().substring(0,15)+"...";  //使用字符串截取，获取前30个字符，多余的字符使用“......”代替
-                    $(this).html(str);                   //将替换的值赋值给当前对象
-                }
-             });
-        }
     
 }
 var i;
@@ -2356,7 +2321,7 @@ function refreshBD()
         //alert(yearStr);
         if(BigDay[`y${yearStr}`][dList[i].m-1][dList[i].d-1].goal)
         {
-            goalBDList[i].innerHTML=BigDay[`y${yearStr}`][dList[i].m-1][dList[i].d-1].goal;
+            goalBDList[i].innerHTML=theWidth<height?Limit16(BigDay[`y${yearStr}`][dList[i].m-1][dList[i].d-1].goal):BigDay[`y${yearStr}`][dList[i].m-1][dList[i].d-1].goal;
             BDOKList[i].style.visibility="visible";
             if(BigDay[`y${yearStr}`][dList[i].m-1][dList[i].d-1].isOK)
             {
@@ -2374,17 +2339,6 @@ function refreshBD()
             BDOKList[i].style.visibility="hidden";
         }
     }
-    if(theWidth<height)
-        {
-            $(".omit16").each(function(){
-                var len=$(this).text().length;   //当前HTML对象text的长度
-                if(len>16){
-                    var str="";
-                    str=$(this).text().substring(0,15)+"...";  //使用字符串截取，获取前30个字符，多余的字符使用“......”代替
-                    $(this).html(str);                   //将替换的值赋值给当前对象
-                }
-             });
-        }
     
 }
 
@@ -2550,7 +2504,7 @@ function lineRefreshUD()
             else
             {
                 goalUDList[i].style.visibility="visible";
-                goalUDList[i].innerHTML=UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine].goal;
+                goalUDList[i].innerHTML=theWidth<height?Limit16(UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine].goal):UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine].goal;
                 UDOKList[i].style.visibility="visible";
                 MoveUpList[i].style.visibility='hidden';
                 if(UltimateDay[`y${nowYearStr}`][nowMonth][nowDay-1][nowLine].isOK)
@@ -2571,17 +2525,6 @@ function lineRefreshUD()
             }
         }
     }
-    if(theWidth<height)
-        {
-            $(".omit16").each(function(){
-                var len=$(this).text().length;   //当前HTML对象text的长度
-                if(len>16){
-                    var str="";
-                    str=$(this).text().substring(0,15)+"...";  //使用字符串截取，获取前30个字符，多余的字符使用“......”代替
-                    $(this).html(str);                   //将替换的值赋值给当前对象
-                }
-             });
-        }
    
 }
 var i;
@@ -2749,4 +2692,11 @@ function MUClick(i)
         }
     }
     return f;
+}
+
+function Limit16(str){
+    if(str.length>16){
+        str=str.substring(0,15)+"...";
+    }
+    return str;
 }
